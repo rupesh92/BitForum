@@ -28,11 +28,14 @@ class UsersController < ApplicationController
   def check_login
     debugger
     if User.find_by_email(params[:user][:email]).blank?
-      debugger
+      debugger # may be exit and re render login page with a message invalid email
     else
       matched_user = User.find_by_email(params[:user][:email])
     end
-    if matched_user and valid_password?(params[:user][:password])
+    if matched_user.authenticate(params[:user][:password])
+      debugger
+    else
+      # password id mismatch dude !
       debugger
     end
   end
