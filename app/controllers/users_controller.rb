@@ -7,13 +7,14 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-
+  def login
+    @user = User.new
+  end
   def create
     @user = User.new(user_params)
-    debugger
     if @user.save
 
-      render login
+      render 'login'
       # Handle a successful save.
     else
       render 'new'
@@ -24,11 +25,15 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :phone_number, :bitcoin_address)
   end
 
-  def login
+  def check_login
     debugger
-    User user = User.find_by_email(params[:user][:email])
-    
-    if user.valid_password?(params[:user][:password])
+    if User.find_by_email(params[:user][:email]).blank?
+      debugger
+    else
+      matched_user = User.find_by_email(params[:user][:email])
+    end
+    if matched_user and valid_password?(params[:user][:password])
+      debugger
     end
   end
 end
