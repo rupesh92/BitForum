@@ -1,0 +1,15 @@
+<% provide(:title, 'Ask a Question') %>
+<h1>Ask a Question</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@question, :url => {:action => "post"} , :method => "post") do |f| %>
+
+      <%= f.label :Enter_your_question %>
+      <%= f.text_field :body %>
+
+
+      <%= f.submit "Post", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
