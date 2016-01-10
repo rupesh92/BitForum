@@ -1,15 +1,38 @@
 <% provide(:title, 'Ask a Question') %>
 <h1>Ask a Question</h1>
 
+<script>
+	var counter = 1;
+	var temp = [];
+	var question;
+    function addInput(divName){
+
+          var newdiv = document.createElement('div');
+          newdiv.innerHTML = "Entry " + (counter + 1) + " <br><input type='text' name='myInputs' id = 'try"+counter+"'>";
+          document.getElementById(divName).appendChild(newdiv);
+          counter++;
+          // temp.push(document.getElementById('try'+(counter-2)).value);
+}
+function collectInputTags(){
+	question = document.getElementById('body').value;
+	for(var i=0;i<counter;i++)
+		temp.push(document.getElementById('try'+(i)).value);
+	}
+ </script>
+}
+
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@question, :url => {:action => "post"} , :method => "post") do |f| %>
+    <form method="POST">
+		    Your Question<br><input type="text" id="body">
+		     <div id="dynamicInput">
+		          Entry 1<br><input type="text" name="myInputs[]" id="try0">
 
-      <%= f.label :Enter_your_question %>
-      <%= f.text_field :body %>
+		     </div>
+		     <input type="button" value="Add another text input" onClick="addInput('dynamicInput');">
+		     <input type="button" value="Post the Question" onClick="collectInputTags()">
 
-
-      <%= f.submit "Post", class: "btn btn-primary" %>
-    <% end %>
+		</form>
   </div>
 </div>
