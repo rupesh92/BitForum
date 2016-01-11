@@ -3,13 +3,14 @@ class QuestionsController < ApplicationController
   	@question = Question.new
   end
   def post
-  	question = Question.create(:body => params[:question]);
+    user = User.find_by(id: session[:user_id]);
+  	question = user.questions.create(:body => params[:question]);
   	tags = JSON.parse(params[:tags])
 
   	tags.each do |tag|
-  		Tag.create(:body => tag , :question_id => question.id)
+  		Tag.create(:body => tag.downcase , :question_id => question.id)
   	end
-  	debugger
-  	redirect_to ask
+    render :js => "window.location = '#{root_path}'"
+    return
   end
 end

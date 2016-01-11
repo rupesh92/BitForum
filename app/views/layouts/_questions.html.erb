@@ -1,0 +1,17 @@
+
+<table class="table table-striped">
+  <% i = 0 %>
+  <% @questions.each do |question| %>
+
+  <tr>
+    <td><%= question.body %></td>
+    <% tags = JSON.parse(@tags[i]) %>
+
+    <% tags.each do |tag| %>
+      <td><%= tag["body"] %></td>
+    <% end %>
+
+  </tr>
+  <% i=i+1 %>
+  <% end %>
+</table>

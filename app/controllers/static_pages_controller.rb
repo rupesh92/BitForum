@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @tag = Tag.new
     if logged_in?
       redirect_to User.find_by_id(session[:user_id])
     end

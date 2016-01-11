@@ -6,6 +6,7 @@
 	var temp = [];
 	var question;
 	var tags;
+	var response;
     function addInput(divName){
           var newdiv = document.createElement('div');
           newdiv.innerHTML = "Entry " + (counter + 1) + " <br><input type='text' name='myInputs' id = 'try"+counter+"'>";
@@ -19,7 +20,7 @@ function collectInputTags(){
 		temp.push(document.getElementById('try'+(i)).value);
 	tags = JSON.stringify(temp)
 
-	$.post( "/post", { question: question , tags: tags} );
+	response = $.post( "/post", { question: question , tags: tags} );
 	}
  </script>
 

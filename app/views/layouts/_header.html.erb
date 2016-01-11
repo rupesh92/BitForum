@@ -3,9 +3,10 @@
     <%= link_to "Bit Ask", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
+         <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", help_path %></li>
         <% if logged_in? %>
+          
           <li><%= link_to "Users", '#' %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -18,11 +19,22 @@
               <li>
                 <%= link_to "Log out", logout_path, method: "delete" %>
               </li>
-            </ul>
+           </ul>
+          </li>
+           <li>
+            <div class="input-group">
+            <%= form_tag(search_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+            
+            <% end %>
+            </div>
           </li>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
         <% end %>
+
+       
+       
       </ul>
     </nav>
   </div>

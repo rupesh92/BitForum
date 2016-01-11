@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
 
   def show
+    @questions = Question.where(:user_id => session[:user_id])
+    @tags = []
+    @questions.each do |question|
+      temp = Tag.where(:question_id => question.id);
+      @tags.push(temp.to_json)  
+    end
     @user = User.find(params[:id])
   end
 

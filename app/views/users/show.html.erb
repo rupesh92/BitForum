@@ -1,12 +1,20 @@
 <% provide(:title, @user.name) %>
+
+
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
+
+        <%= link_to "Ask a new Question", ask_question_path, class: "btn btn-lg btn-primary " %>
         <%= gravatar_for @user %>
         <%= @user.name %>
+        
       </h1>
-        <%= link_to "Ask a new Question", ask_question_path, class: "btn btn-lg btn-primary " %>
+      <body>
+	      </br>
+	        <%= render 'layouts/questions' %>
+       </body>
     </section>
   </aside>
 </div>
