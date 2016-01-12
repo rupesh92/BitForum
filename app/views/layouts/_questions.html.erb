@@ -4,7 +4,7 @@
   <% @questions.each do |question| %>
 
   <tr>
-    <td><%= question.body %></td>
+    <td><%= link_to question.body, show_question_path('question_id': question.id) %></td>
     <% tags = JSON.parse(@tags[i]) %>
 
     <% tags.each do |tag| %>

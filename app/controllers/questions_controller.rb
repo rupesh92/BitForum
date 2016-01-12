@@ -13,4 +13,10 @@ class QuestionsController < ApplicationController
     render :js => "window.location = '#{root_path}'"
     return
   end
+
+  def show
+    @question = Question.where(:id => params[:question_id]).first
+    @tags = Tag.where(:question_id => params[:question_id])
+    @answers = Answer.where(:question_id => params[:question_id])
+  end
 end
