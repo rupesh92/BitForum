@@ -6,11 +6,21 @@ class TagsController < ApplicationController
   		 flash[:success] = "Sorry no questions with the tag #{params[:tag]} found"
   		 redirect_to @user
   	else
+
 	  	@user = User.find(session[:user_id])
-	  	@questions = Question.where(:id => tag.question_id)
+	  	@questions = []
+	  	tagQuestions= TagQuestion.where(:tag_id =>tag.id)
+
+	  	tagQuestions.each do |tagQuestion|
+	  		@questions << Question.where(:id => tagQuestion.question_id).first
+	  	end
 	  	@tags = []
 	    @questions.each do |question|
-	      temp = Tag.where(:question_id => question.id);
+	    	tagQuestions = TagQuestion.where(:question_id => question.id)
+	    	temp = []
+	    	tagQuestions.each do |tagQuestion|
+	    		temp << Tag.where(:id => tagQuestion.tag_id).first
+	    	end
 	      @tags.push(temp.to_json)  
 	    end
 	end

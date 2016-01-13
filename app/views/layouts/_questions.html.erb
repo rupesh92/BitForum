@@ -1,17 +1,31 @@
 
-<table class="table table-striped">
+
   <% i = 0 %>
   <% @questions.each do |question| %>
 
-  <tr>
-    <td><%= link_to question.body, show_question_path('question_id': question.id) %></td>
+    <div class = "well ">
+    <%= link_to question.body, show_question_path('question_id': question.id) %>
+    
     <% tags = JSON.parse(@tags[i]) %>
-
+    
+    <div class = 'pull-right well-small'>
+        Last updated <%= question["updated_at"] %>
+    </div>
+    </br>
     <% tags.each do |tag| %>
-      <td><%= tag["body"] %></td>
+    <span class="tag label label-primary post-taglist">
+    
+     
+      <%= link_to tag["body"], search_path('tag': tag["body"]) ,{style: "color:white"} %><span data-role="remove">
+     
+      </span>
+      </span>
     <% end %>
 
-  </tr>
+    
+
+
   <% i=i+1 %>
+  </div>
   <% end %>
-</table>
+

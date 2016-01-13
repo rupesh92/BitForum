@@ -9,7 +9,7 @@
 	var response;
     function addInput(divName){
           var newdiv = document.createElement('div');
-          newdiv.innerHTML = "Entry " + (counter + 1) + " <br><input type='text' name='myInputs' id = 'try"+counter+"'>";
+          newdiv.innerHTML = "Tag " + (counter + 1) + " <br><input type='text' name='myInputs' id = 'try"+counter+"'>";
           document.getElementById(divName).appendChild(newdiv);
           counter++;
           // temp.push(document.getElementById('try'+(counter-2)).value);
@@ -30,10 +30,10 @@ function collectInputTags(){
     <form method="POST">
 		    Your Question<br><input type="text" id="body">
 		     <div id="dynamicInput">
-		          Entry 1<br><input type="text" name="myInputs[]" id="try0">
+		          Tag 1<br><input type="text" name="myInputs[]" id="try0">
 
 		     </div>
-		     <input type="button" value="Add another text input" onClick="addInput('dynamicInput');">
+		     <input type="button" value="Add another tag" onClick="addInput('dynamicInput');">
 		     <input type="button" value="Post the Question" onClick="collectInputTags()">
 
 		</form>

@@ -15,10 +15,14 @@
     <% end %>
   </tr>
 </table>
+<div class="container">
+<div class="jumbotron">
  <div class="input-group">
             <%= form_tag(add_answer_path({:question_id => @question.id}), :method => "get", id: "search-form") do %>
             <%= text_field_tag :answer, params[:answer], placeholder: "Post an answer" %>
             <%= hidden_field_tag :question_id, @question.id %>
             <button class="btn btn-lg btn-primary btn-md" type="submit" >Post</button>
             <% end %>
+            </div>
+            </div>
             </div>
