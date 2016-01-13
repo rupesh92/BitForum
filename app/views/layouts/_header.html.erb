@@ -1,7 +1,11 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Bit Ask", root_path, id: "logo" %>
+ 
     <nav>
+     <a id="logo">
+   <%= link_to image_tag("logo.png", alt: "App logo",width: "40", height: "40"),
+            'root_path' %>
+    </a>
       <ul class="nav navbar-nav navbar-right">
          <li><%= link_to "Home", root_path %></li>
         <li><%= link_to "Help", help_path %></li>
