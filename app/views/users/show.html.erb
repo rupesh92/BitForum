@@ -1,7 +1,6 @@
 <% provide(:title, @user.name) %>
-
+ <%= render 'layouts/user' %>
 <div class = "page-header">
-      <%= gravatar_for @user %>
      <h1> Welcome <%= @user.name %>
      <div class=" pull-right">
     <%= link_to "Ask a Question", ask_question_path, class: "btn btn-lg btn-primary " %></h1>

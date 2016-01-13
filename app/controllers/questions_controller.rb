@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
   	@question = Question.new
   end
   def post
+    debugger
     user = User.find_by(id: session[:user_id]);
   	question = user.questions.create(:body => params[:question]);
   	tags = JSON.parse(params[:tags])

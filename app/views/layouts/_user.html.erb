@@ -1,0 +1,23 @@
+<div class="pull-left" >
+
+	<div class="thumbnail">
+	<%= gravatar_for @user %>
+	</div>
+    <div class="pull-right">
+	    <div class="spacer10 ">
+		    <blockquote>
+		    	<p style="font-size:95%; margin:0px">
+		        <%= @user.name %>
+		        </p>
+		    	<p style="font-size:95%; margin:0px">
+		        <%= Question.where(:user_id => @user.id).count %> Asked 
+				
+		        </p>
+		    	<p style="font-size:95%; margin:0px">
+				<%= Answer.where(:user_id => @user.id).count %> Answered</p>
+		   
+		    </blockquote>
+	     </div>
+    </div>
+
+</div>
