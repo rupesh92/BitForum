@@ -20,6 +20,7 @@ class QuestionsController < ApplicationController
   def show
 
     @question = Question.where(:id => params[:question_id]).first
+    
     tagQuestions = TagQuestion.where(:question_id => params[:question_id])
     @tags = []
     tagQuestions.each do |tagQuestion|

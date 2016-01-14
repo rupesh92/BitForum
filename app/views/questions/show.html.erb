@@ -1,20 +1,37 @@
-<table class="table table-striped">
+<!-- <div class="container">
 
-
-  <tr>
-    <td><%= link_to @question.body, show_question_path('question_id': @question.id) %></td>
+  <div class="well">
+  <div class="container">
+   <%= render 'layouts/user', :@user => User.where(:id => @question.user_id).first %>
+    <%= link_to @question.body, show_question_path('question_id': @question.id) %>
+    <div class = 'pull-right well-small'>
+        Last updated <%= @question["updated_at"] %>
+    </div>
+    </br>
+    <% @tags.each do |tag| %>
+      <span class="tag label label-primary post-taglist">
     
+     
+      <%= link_to tag["body"], search_path('tag': tag["body"]) ,{style: "color:white"} %><span data-role="remove">
+      </span>
+      </span>
+    <% end %>
+  </div>
+  </div>
+
+    <br>
+
     <% @answers.each do |answer| %>
-      <td><%= answer["body"] %></td>
+    <div class="well">
+
+      <div class="container">
+        <%= render 'layouts/user', :@user => User.where(:id => answer.user_id).first %>
+        <%= answer["body"] %>
+      </div>
+    </div>
     <% end %>
- 
-  </tr>
-  <tr>
-  <% @tags.each do |tag| %>
-      <td><%= tag["body"] %></td>
-    <% end %>
-  </tr>
-</table>
+
+</div>
 <div class="container">
 <div class="jumbotron">
  <div class="input-group">
@@ -25,4 +42,58 @@
             <% end %>
             </div>
             </div>
+            </div> -->
+
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<div class="detailBox">
+    <div class="titleBox">
+      <label>Question Details</label>
+    </div>
+
+    <div class="commentBox pull-right">
+
+        <div class="jumbotron">
+        <div class="container">
+         <%= render 'layouts/user', :@user => User.where(:id => @question.user_id).first %>
+        <p class="taskDescription"> <%= link_to @question.body, show_question_path('question_id': @question.id) %></p>
+         <% @tags.each do |tag| %>
+            <span class="tag label label-primary post-taglist">
+          
+           
+              <%= link_to tag["body"], search_path('tag': tag["body"]) ,{style: "color:white"} %><span data-role="remove">
+            </span>
+            </span>
+       <% end %>
+       </br>
+        <span class="date sub-text"><%= @question["updated_at"] %></span>
+
+        </div>
+        </div>
+    </div>
+
+    <div class="actionBox">
+            <% @answers.each do |answer| %>
+            <li>
+                <div class="container pull-left">
+                <div class="commenterImage">
+                   <%= render 'layouts/user', :@user => User.where(:id => answer.user_id).first %>
+                </div>
+                <div class="commentText">
+                    <p class=""><%= answer.body %></p> <span class="date sub-text"> <%= answer["updated_at"] %></span>
+
+                </div>
+                </div>
+            </li>
+            <% end %>
+        </ul>
+ <div class="input-group">
+            <%= form_tag(add_answer_path({:question_id => @question.id}), :method => "get", id: "search-form") do %>
+            <%= text_area_tag :answer, params[:answer], placeholder: "Post an answer" , size:"150%" %>
+            <%= hidden_field_tag :question_id, @question.id %>
+            <button class="btn btn-lg btn-primary btn-md" type="submit" >Post</button>
+            <% end %>
             </div>
+            </div>
+            </div>
+    </div>
+</div>

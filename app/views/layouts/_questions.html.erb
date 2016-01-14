@@ -5,7 +5,11 @@
   <% @user = User.where(:id => question.user_id).first %>
 
     <div class = "well ">
-     <%= render 'layouts/user' %>
+    <div class = "container">
+
+         <%= render 'layouts/user' %>
+        
+
      
     
     <%= link_to question.body, show_question_path('question_id': question.id) %>
@@ -25,7 +29,7 @@
       </span>
     <% end %>
 
-    
+     </div>
 
 
   <% i=i+1 %>
