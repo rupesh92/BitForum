@@ -12,7 +12,7 @@
 
      
     
-    <%= link_to question.body, show_question_path('question_id': question.id) %>
+    <%= link_to question.body, show_question_path(:question_id => question.id) %>
     
     <% tags = JSON.parse(@tags[i]) %>
     
