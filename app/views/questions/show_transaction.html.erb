@@ -1,0 +1,18 @@
+<% provide(:title, 'Show Transactions') %>
+
+<script type="text/javascript">
+  var url = 'https://api.blocktrail.com/v1/btc/address/1qMBuZnrmGoAc2MWyTnSgoLuWReDHNYyF/transactions?api_key=1872871da8be748b0bb57c57c77d7dd2282105d2';
+
+  function req(){
+        $.getJSON(url, function (json) {
+        var a = json.data[0].hash;
+    });
+    }
+
+      function sendRequest(){
+      document.getElementById("view_transaction").disabled=false;
+      setInterval(req, 300000);
+    }
+
+    </script>
+    <div class="actionBox">
