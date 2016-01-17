@@ -7,7 +7,6 @@ class QuestionsController < ApplicationController
 
   # Posts a Question with tags - adds it to the database tables - Tag, TagQuestion, and Question. 
   def post
-    debugger
     user = User.find_by(id: session[:user_id]);
   	question = user.questions.create(:body => params[:question]);
   	tags = JSON.parse(params[:tags])
@@ -32,5 +31,8 @@ class QuestionsController < ApplicationController
       @tags << (Tag.where(:id => tagQuestion.tag_id)).first
     end
     @answers = Answer.where(:question_id => params[:question_id])
+  end
+
+  def show_status
   end
 end

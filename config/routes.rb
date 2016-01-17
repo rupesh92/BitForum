@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   get     'search'  => 'tags#search'
 
   get     'show_question' => 'questions#show'
+
+  get     'show_status' => 'questions#show_status'
   get     'add_answer' => 'answers#add'
 
   get     'fetch_json' => 'answers#fetchJson'

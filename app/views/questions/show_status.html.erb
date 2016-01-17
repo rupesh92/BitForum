@@ -1,0 +1,52 @@
+<% provide(:title, 'Show Transactions') %>
+
+<script type="text/javascript">
+  var url = 'https://api.blocktrail.com/v1/btc/address/1qMBuZnrmGoAc2MWyTnSgoLuWReDHNYyF/transactions?api_key=1872871da8be748b0bb57c57c77d7dd2282105d2';
+
+  var fetched_data;
+  function req(){
+        
+        $.getJSON(url, function (json) {
+          fetched_data = json;
+          var table = document.createElement('table'), tr, td, row, cell;
+          for (row = 0; row < 10; row++) {
+              tr = document.createElement('tr');
+              for (cell = 0; cell < 10; cell++) {
+                  td = document.createElement('td');
+                  tr.appendChild(td);
+                  
+                  td.innerHTML = fetched_data.data[row].hash;
+              }
+              table.appendChild(tr);
+          }
+          document.getElementById('container').appendChild(table);
+          });
+    }
+    window.onload = function(){
+      req();
+    }
+  </script>
+
+<!-- <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Address</th>
+        <th>Amount</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody> -->
+    <div id="container">
+    </div>
+      <script>
+        
+      </script>
+<!--       <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+
+    </tbody>
+  </table> -->
+
