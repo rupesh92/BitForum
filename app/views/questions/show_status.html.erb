@@ -9,14 +9,47 @@
         $.getJSON(url, function (json) {
           fetched_data = json;
           var table = document.createElement('table'), tr, td, row, cell;
-          for (row = 0; row < 10; row++) {
+
               tr = document.createElement('tr');
-              for (cell = 0; cell < 10; cell++) {
-                  td = document.createElement('td');
+              th = document.createElement('th');
+                  tr.appendChild(th);
+                  
+              th.innerHTML = "Address";
+
+              th = document.createElement('th');
+                  tr.appendChild(th);
+                  
+              th.innerHTML = "Value";
+
+              th = document.createElement('th');
+                  tr.appendChild(th);
+                  
+              th.innerHTML = "Number of confirmed transfers";
+              table.appendChild(tr);
+
+          for (row = 0; row < fetched_data.data.length; row++) {
+              tr = document.createElement('tr');
+              td = document.createElement('td');
                   tr.appendChild(td);
                   
-                  td.innerHTML = fetched_data.data[row].hash;
-              }
+              td.innerHTML = fetched_data.data[row].hash;
+
+              td = document.createElement('td');
+                  tr.appendChild(td);
+                  
+              td.innerHTML = json.data[row].total_output_value;
+
+              td = document.createElement('td');
+                  tr.appendChild(td);
+                  
+              td.innerHTML = json.data[0].confirmations;
+
+              // for (cell = 0; cell < 12; cell++) {
+              //     td = document.createElement('td');
+              //     tr.appendChild(td);
+                  
+              //     td.innerHTML = fetched_data.data[row].hash;
+              // }
               table.appendChild(tr);
           }
           document.getElementById('container').appendChild(table);
