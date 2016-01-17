@@ -1,3 +1,5 @@
+#Actions that are available throughtout the application
+
 class TagsController < ApplicationController
 	# Searches for the input tag to find all related Questions and
 	# populates variables for the view.

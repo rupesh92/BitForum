@@ -85,6 +85,8 @@
 
   <section class="description">
     
+<p>Actions that are available throughtout the application</p>
+
   </section>
 
   
@@ -126,7 +128,7 @@ variables for the view.</p>
 
           
           <div class="method-source-code" id="search-source">
-            <pre><span class="ruby-comment"># File app/controllers/tags_controller.rb, line 4</span>
+            <pre><span class="ruby-comment"># File app/controllers/tags_controller.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">search</span>
       <span class="ruby-identifier">tag</span> = <span class="ruby-constant">Tag</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:body</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:tag</span>]).<span class="ruby-identifier">first</span>
       <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">session</span>[<span class="ruby-value">:user_id</span>])
