@@ -63,7 +63,7 @@ debugger
                 <div class="container pull-left">
                 <div class="commenterImage">
                    <%= render 'layouts/user', :@user => User.where(:id => answer.user_id).first %>
-                </div>\
+                </div>
                 
                 <div class="commentText">
                     <p class=""><%= answer.body %></p> <span class="date sub-text"> <%= answer["updated_at"] %></span>

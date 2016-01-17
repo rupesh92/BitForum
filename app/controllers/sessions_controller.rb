@@ -1,8 +1,11 @@
 class SessionsController < ApplicationController
 
+  # Redirects to login for a new session
   def new
   end
 
+  # On login form submit , validates and logs the user in.
+  # If the email_id and password are incorrect redirects to the login page with an error message.
   def create
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
@@ -15,6 +18,7 @@ class SessionsController < ApplicationController
     end
   end
 
+  # Logs out the user.
   def destroy
     logout(User.find_by(id: session[:user_id]))
   end

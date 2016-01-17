@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+	# Searches for the input tag to find all related Questions and
+	# populates variables for the view.
   def search
   	tag = Tag.where(:body => params[:tag]).first
   	@user = User.find(session[:user_id])

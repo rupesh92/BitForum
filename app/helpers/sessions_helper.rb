@@ -1,6 +1,6 @@
 module SessionsHelper
 
-  # Logs in the given user.
+  # Logs in the given user, setting the session[:user_id].
   def log_in(user)
     session[:user_id] = user.id
   end
@@ -15,6 +15,7 @@ module SessionsHelper
     !current_user.nil?
   end
 
+    # Logs out, the user setting session[:user_id] to nil.
   def logout(user)
     session[:user_id] = nil
     redirect_to root_path

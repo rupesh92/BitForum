@@ -1,7 +1,11 @@
 class QuestionsController < ApplicationController
+  
+  # Generates a Form to ask Question. Redirects to /ask.
   def ask
   	@question = Question.new
   end
+
+  # Posts a Question with tags - adds it to the database tables - Tag, TagQuestion, and Question. 
   def post
     debugger
     user = User.find_by(id: session[:user_id]);
@@ -17,6 +21,7 @@ class QuestionsController < ApplicationController
     return
   end
 
+  # Displays the details of a particular Question - User, Question, Tags, Answer and tips.
   def show
 
     @question = Question.where(:id => params[:question_id]).first

@@ -23,6 +23,21 @@ Things you may want to cover:
 
 * ...
 
+Bit Ask
+Features:
 
+
+* User Login
+* Session Information kept
+* Ask Questions and receive detailed answers
+* Answer Question and earn Bitcoins from all users who like it
+* Search the questions you have by tags and check and already posted answer
+* Tip friends is the answers help you out :)
+
+
+Code details:
+
+We have developed the web-app in RubyonRails
 Please feel free to use a different markup language if you do not plan to run
+
 <tt>rake doc:app</tt>.
