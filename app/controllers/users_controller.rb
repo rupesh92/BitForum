@@ -24,10 +24,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to the Sample App!"
-      redirect_to @user
+      flash[:success] = "Welcome to the BitAsk!"
+      redirect_to login_path
       # Handle a successful save.
     else
+      flash[:error] = "Please enter a valid email and password (7 letters atleast)"
       render 'new'
     end
   end
