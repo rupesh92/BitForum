@@ -29,33 +29,19 @@
     
 
 <script type="text/javascript">
-        function sendRequest(){
-            var global;
-          var intervalID = setInterval(function(){
-          
+  var url = 'https://api.blocktrail.com/v1/btc/address/1qMBuZnrmGoAc2MWyTnSgoLuWReDHNYyF/transactions?api_key=1872871da8be748b0bb57c57c77d7dd2282105d2';
 
-//             var jqxhr = $.getJSON( "http://www.w3schools.com/json/myTutorials.js", function(data) {
-//   alert( data );
-// })
-          debugger
-var url = 'https://api.blocktrail.com/v1/btc/address/1qMBuZnrmGoAc2MWyTnSgoLuWReDHNYyF/transactions?api_key=1872871da8be748b0bb57c57c77d7dd2282105d2';
-  $.getJSON('https://jsonp.afeld.me/?callback=?&url='+url, function(data){
-    alert('fake AJAX! ' + data);
-debugger
-            
-
-                 // -----------the url---v         ------------the callback---v
-        
-
-
-        }, 500000);
-
-
-
-          
-          // temp.push(document.getElementById('try'+(counter-2)).value);
+  function req(){
+        $.getJSON(url, function (json) {
+        var a = json.data[0].hash;
     });
-}
+    }
+
+      function sendRequest(){
+      document.getElementById("view_transaction").disabled=false;
+      setInterval(req, 300000);
+    }
+
     </script>
     <div class="actionBox">
             <% @answers.each do |answer| %>
@@ -67,8 +53,10 @@ debugger
                 
                 <div class="commentText">
                     <p class=""><%= answer.body %></p> <span class="date sub-text"> <%= answer["updated_at"] %></span>
+                    
                     <button class="btn btn-lg btn-primary btn-md" onclick="window.open('https://www.blocktrail.com/'); sendRequest()" >Tip Bitcoins</button>
 
+                    <button id="view_transaction" class="btn btn-lg btn-primary btn-md" disabled="true" onclick="window.open('https://www.blocktrail.com/'); sendRequest()" >Tip Bitcoins</button>
 
                 </div>
                 </div>
