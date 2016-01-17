@@ -1,5 +1,6 @@
 
 <link rel="stylesheet" type="text/css" href="style.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <div class="detailBox">
     <div class="titleBox">
       <label>Question Details</label>
@@ -25,37 +26,36 @@
         </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
 
-    <script type="text/javascript">
+<script type="text/javascript">
         function sendRequest(){
             var global;
           var intervalID = setInterval(function(){
-            //var url = "https://api.blocktrail.com/v1/btc/address/1qMBuZnrmGoAc2MWyTnSgoLuWReDHNYyF/transactions?api_key=5adb0a94a6eb60cb3b8a626e774156521b2ab964&callback=?";
-    //         $.getJSON("https://api.blocktrail.com/v1/btc/address/1qMBuZnrmGoAc2MWyTnSgoLuWReDHNYyF/transactions?api_key=5adb0a94a6eb60cb3b8a626e774156521b2ab964&callback=?", function(data) {
-    // // Get the element with id summary and set the inner text to the result.
-    //         console.log(data.result)
-    //         alert(data.result);
-    //     });
+          
 
-            var jqxhr = $.getJSON( "http://w3schools.com/json/myTutorials.js'", function(data) {
-  alert( data );
-})
-
-
+//             var jqxhr = $.getJSON( "http://www.w3schools.com/json/myTutorials.js", function(data) {
+//   alert( data );
+// })
+          debugger
+var url = 'https://api.blocktrail.com/v1/btc/address/1qMBuZnrmGoAc2MWyTnSgoLuWReDHNYyF/transactions?api_key=1872871da8be748b0bb57c57c77d7dd2282105d2';
+  $.getJSON('https://jsonp.afeld.me/?callback=?&url='+url, function(data){
+    alert('fake AJAX! ' + data);
+debugger
             
 
                  // -----------the url---v         ------------the callback---v
         
 
 
-        }, 5000);
+        }, 500000);
 
 
 
           
           // temp.push(document.getElementById('try'+(counter-2)).value);
-    }
+    });
+}
     </script>
     <div class="actionBox">
             <% @answers.each do |answer| %>
