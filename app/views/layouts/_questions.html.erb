@@ -24,7 +24,7 @@
     <span class="tag label label-primary post-taglist">
     
      
-      <%= link_to tag["body"], search_path('tag': tag["body"]) ,{style: "color:white"} %><span data-role="remove">
+      <%= link_to tag["body"], search_path(:tag => tag["body"]) ,{style: "color:white"} %><span data-role="remove">
       </span>
       </span>
     <% end %>
