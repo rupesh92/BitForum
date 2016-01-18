@@ -4,13 +4,8 @@
 
 ==== To Install:
 
-*
-:section Install rails 4
-- ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-- brew install rbenv ruby-build
-- rbenv install 2.2.3
-- gem install rails -v 4.2.4
-- rbenv rehash
+
+- Install rails 4
 * cd to the App folder BitForum
 * rake db:migrate
 * rails s
