@@ -38,7 +38,7 @@ class QuestionsController < ApplicationController
   def show_status
      proxy = URI("http://10.3.100.207:8080")
      #options =   {http_proxyaddr: proxy.host,http_proxyport:proxy.port}
-     option = {}
+     options = {}
      address = '1qMBuZnrmGoAc2MWyTnSgoLuWReDHNYyF'
      key = '5adb0a94a6eb60cb3b8a626e774156521b2ab964'
      url = "https://api.blocktrail.com/v1/btc/address/#{address}/transactions?api_key=#{key}"
