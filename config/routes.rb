@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get     'search'  => 'tags#search'
 
   get     'show_question' => 'questions#show'
-
+  get     'show_latest_questions'  => 'questions#show_latest'
   get     'show_status' => 'questions#show_status'
   get     'add_answer' => 'answers#add'
 

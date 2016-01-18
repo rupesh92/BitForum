@@ -35,4 +35,17 @@ class QuestionsController < ApplicationController
 
   def show_status
   end
+
+  def show_latest
+    @questions = Question.last(10).reverse
+    @tags = []
+    @questions.each do |question|
+       tagQuestions = TagQuestion.where(:question_id => question.id)
+       temp = []
+        tagQuestions.each do |tagQuestion|
+          temp << (Tag.where(:id => tagQuestion.tag_id)).first
+        end
+      @tags.push(temp.to_json)  
+    end
+  end
 end
