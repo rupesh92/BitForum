@@ -12,9 +12,11 @@ class QuestionsController < ApplicationController
   	tags = JSON.parse(params[:tags])
 
   	tags.each do |tag|
-  		Tag.create(:body => tag.downcase , :question_id => question.id)
-      tag_id = Tag.where(:body =>tag.downcase).first.id
-      TagQuestion.create(:question_id => question.id, :tag_id => tag_id)
+      if tag.empty? == false
+    		Tag.create(:body => tag.downcase , :question_id => question.id)
+        tag_id = Tag.where(:body =>tag.downcase).first.id
+        TagQuestion.create(:question_id => question.id, :tag_id => tag_id)
+      end
   	end
     render :js => "window.location = '#{root_path}'"
     return
