@@ -1,88 +1,59 @@
 <% provide(:title, 'Show Transactions') %>
 
-<script type="text/javascript">
-  var url = 'https://api.blocktrail.com/v1/btc/address/1qMBuZnrmGoAc2MWyTnSgoLuWReDHNYyF/transactions?api_key=1872871da8be748b0bb57c57c77d7dd2282105d2';
-  debugger
-  var json = <%= @response %>;
-  debugger
-  var fetched_data;
-  function req(){
-        
-        $.getJSON(url, function (json) {
-          fetched_data = json;
-          var table = document.createElement('table'), tr, td, row, cell;
+<div id = "container">
+  <table class = "table table-striped">
+  <thead>
+  <tr>
+    <th data-field = "address">Address</th>
+    <th data-field = "value">Value in Satoshi</th>
+    <th data-field = "value_in_rupee">Value in Rupees</th>
 
-              tr = document.createElement('tr');
-              th = document.createElement('th');
-                  tr.appendChild(th);
-                  
-              th.innerHTML = "Address";
-
-              th = document.createElement('th');
-                  tr.appendChild(th);
-                  
-              th.innerHTML = "Value";
-
-              th = document.createElement('th');
-                  tr.appendChild(th);
-                  
-              th.innerHTML = "Number of confirmed transfers";
-              table.appendChild(tr);
-
-          for (row = 0; row < json[row].length; row++) {
-              tr = document.createElement('tr');
-              td = document.createElement('td');
-                  tr.appendChild(td);
-                  
-              td.innerHTML = fetched_data.data[row].hash;
-
-              td = document.createElement('td');
-                  tr.appendChild(td);
-                  
-              td.innerHTML = json.data[row].total_output_value;
-
-              td = document.createElement('td');
-                  tr.appendChild(td);
-                  //response[0]["outputs"][0]["address"]
-
-              td.innerHTML = data[0].confirmations;
-
-              // for (cell = 0; cell < 12; cell++) {
-              //     td = document.createElement('td');
-              //     tr.appendChild(td);
-                  
-              //     td.innerHTML = fetched_data.data[row].hash;
-              // }
-              table.appendChild(tr);
-          }
-          document.getElementById('container').appendChild(table);
-          });
-    }
-    window.onload = function(){
-      req();
-    }
-  </script>
-
-<!-- <table class="table table-bordered">
-    <thead>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <span style="font-weight:bold"> Mutual Transactions </span>
+      </td><td></td><td></td>
+    </tr>
+    <% if @mutual_transactions.count==0 %>
+      <td>
+      <span > Sorry. No Mutual Transactions found </span>
+      </td><td></td><td></td>
+      <%end%>
+    <% @mutual_transactions.each do |mt| %>
       <tr>
-        <th>Address</th>
-        <th>Amount</th>
-        <th>Time</th>
-      </tr>
-    </thead>
-    <tbody> -->
-    <div id="container">
-    </div>
-      <script>
-        
-      </script>
-<!--       <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
+        <td>
+          <%= mt["address"] %>
+        </td>
+        <td>          
+          <%= mt["value"] %>
+        </td>
 
-    </tbody>
-  </table> -->
+        <td>          
+          <%= mt["value_in_rupee"] %>
+        </td>
+      </tr>
+    <%end%>
+    <tr>
+    <td>
+    <span style="font-weight:bold"> Non Mutual Transactions </span>
+    </td><td></td><td></td>
+    </tr>
+    <% @nonmutual_transactions.each do |mt| %>
+      <tr>
+        <td>
+          <%= mt["address"] %>
+        </td>
+        <td>          
+          <%= mt["value"] %>
+        </td>
+        <td>          
+          <%= mt["value_in_rupee"] %>
+        </td>
+      </tr>
+    <%end%>
+  </tbody>
+  </table>
 
+</div>

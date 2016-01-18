@@ -38,12 +38,25 @@ class QuestionsController < ApplicationController
   def show_status
      proxy = URI("http://10.3.100.207:8080")
      options =   {http_proxyaddr: proxy.host,http_proxyport:proxy.port}
-     
      address = '1qMBuZnrmGoAc2MWyTnSgoLuWReDHNYyF'
      key = '5adb0a94a6eb60cb3b8a626e774156521b2ab964'
      url = "https://api.blocktrail.com/v1/btc/address/#{address}/transactions?api_key=#{key}"
-     
-     @response = HTTParty.get(url,options).parsed_response["data"]
+     @mutual_transactions = []
+     @nonmutual_transactions = []
+     responses = HTTParty.get(url,options).parsed_response["data"]
+     btc_to_rupee = HTTParty.get("https://api.btcxindia.com/ticker/",options).parsed_response["avg"]
+     commenters_address = User.where(:id => params[:commenters_id]).first.bitcoin_address
+     responses.each do |response|
+      response["outputs"].each do |output|
+        output["value_in_rupee"] = (output["value"]*btc_to_rupee*0.00000001).round(2)
+        if output["address"] ==  commenters_address
+          @mutual_transactions << output
+        else
+          @nonmutual_transactions << output
+        end
+      end
+     end
+
      
   end
 
