@@ -1,21 +1,22 @@
 == README
 
-# BitAsk is an app that allows to to ask and answer questions and win Bitcoins in the process !
+=== BitAsk is an app that allows to to ask and answer questions and win Bitcoins in the process !
 
-## To Install:
+==== To Install:
 
-* Install rails 4
-	* ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	* brew install rbenv ruby-build
-	* rbenv install 2.2.3
-	* gem install rails -v 4.2.4
-	* rbenv rehash
+*
+:section Install rails 4
+- ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+- brew install rbenv ruby-build
+- rbenv install 2.2.3
+- gem install rails -v 4.2.4
+- rbenv rehash
 * cd to the App folder BitForum
 * rake db:migrate
 * rails s
 * Goto localhost:3000 and sign up :)
 
-## Features:
+==== Features:
 
 * User Login
 * Session Information stored
@@ -27,7 +28,7 @@
 * Search the questions you have by tags and check an already posted answer
 * Tip friends if the answers help you out :)
 
-### For Detailed documentation of the code check http://rupesh92.github.io/
+==== For Detailed documentation of the code check this[http://rupesh92.github.io/] out
 
 
 Code details:
