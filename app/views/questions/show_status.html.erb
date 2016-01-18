@@ -2,7 +2,9 @@
 
 <script type="text/javascript">
   var url = 'https://api.blocktrail.com/v1/btc/address/1qMBuZnrmGoAc2MWyTnSgoLuWReDHNYyF/transactions?api_key=1872871da8be748b0bb57c57c77d7dd2282105d2';
-
+  debugger
+  var json = <%= @response %>;
+  debugger
   var fetched_data;
   function req(){
         
@@ -27,7 +29,7 @@
               th.innerHTML = "Number of confirmed transfers";
               table.appendChild(tr);
 
-          for (row = 0; row < fetched_data.data.length; row++) {
+          for (row = 0; row < json[row].length; row++) {
               tr = document.createElement('tr');
               td = document.createElement('td');
                   tr.appendChild(td);
@@ -41,8 +43,9 @@
 
               td = document.createElement('td');
                   tr.appendChild(td);
-                  
-              td.innerHTML = json.data[0].confirmations;
+                  //response[0]["outputs"][0]["address"]
+
+              td.innerHTML = data[0].confirmations;
 
               // for (cell = 0; cell < 12; cell++) {
               //     td = document.createElement('td');
