@@ -28,4 +28,7 @@
 
 Code details:
 
-We have developed the web-app in RubyonRails
+- We have developed the web-app in RubyonRails
+- Used the Blocktrail's API to fetch all the transaction between two users.
+- Used BitcrxIndia's API to fetch value of BTC in rupees.
+- Once you click on the Tip Button for an answer you are directed to your blockchain wallet. On coming back, you can check the status of your transaction , and can mark the one you have tranferred for the answer. The tips are hence collected and shown :)
